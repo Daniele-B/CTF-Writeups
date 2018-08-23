@@ -63,7 +63,7 @@ Another thing we can see is that the binary uses sigaction to handle SIGSEGV and
 Sometimes these kind of stuff are used as antidebugger tricks.
 
 If you open a disassembler now what you will see is only mov instructions, and if you are enougth in the business of reversing you will catch immediatly what it means: the binary is obfuscated with [Movfuscator](https://github.com/xoreaxeaxeax/movfuscator.git).
-<br/>[asm86 Mov instruction is turing complete](https://www.cl.cam.ac.uk/~sd601/papers/mov.pdf), which basically means you can replace any other asm86 instruction with a bunch of mov. Cool! Isn't it? Movfuscator does exactly this (and adds some antidebug tricks, alredy described).
+<br/>[asm86 Mov instruction is turing complete](https://www.cl.cam.ac.uk/~sd601/papers/mov.pdf), which basically means you can replace any other asm86 instruction with a bunch of mov. Cool! Isn't it? Movfuscator does exactly this (and adds some antidebug tricks, already described).
 
 So now how do we retrive the original instructions?<br/>
 Have original instrutions back is a painful job but there is an experimental deobfuscator, and we can use it.<br/>
