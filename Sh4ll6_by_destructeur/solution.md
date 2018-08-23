@@ -77,7 +77,7 @@ When a binary performs a char by char check it makes me happy because i can use 
 Let's try:<br/>
 ```>python Valtool.py -l 13 -c 6 -s _ Sh4ll6_cf_restored```
 
-Outupt is pretty ugly beacuse Valtool cannot handle segfault well, but it worked!
+Outupt is pretty ugly becuse Valtool cannot handle segfault well, but it worked!
 Our flag is ```0bfuscated=!```
 
 ```
