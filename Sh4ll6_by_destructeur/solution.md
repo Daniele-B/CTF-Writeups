@@ -4,7 +4,7 @@ I've menaged to solve this crackme using only black box tricks and some guessing
 
 
 This crackme is clearly [UPX](https://upx.github.io) packed, we can find the ```This file is packed with the UPX executable packer http://upx.sf.net``` string in it.
-So lets unpack it! 
+So let's unpack it! 
 ```
 >./upx -d -o Sh4ll6_unpacked Sh4ll6
 
@@ -20,7 +20,7 @@ Unpacked 1 file.
 
 ```
 
-Now, lets move on with another black box trick used when you reverse on Linux: ltrace
+Now, let's move on with another black box trick used when you reverse on Linux: ltrace
 
 ```
 >ltrace ./Sh4ll6_unpacked
@@ -67,12 +67,12 @@ So now how do we retrive the original instructions?<br/>
 Have original instrutions back is a painful job but there is an experimental deobfuscator, and we can use it.<br/>
 [Demovfuscator](https://github.com/kirschju/demovfuscator.git) doesn't retrive the instructions but its very helpful because it removes the annoyng sigaction stuff and, most important, it can give us the original program control flow.
 This is the control flow of our crackme:<br/>
-![alt text](https://i.imgur.com/lRSA686.png)
+![alt text](https://raw.githubusercontent.com/Daniele-B/Crackmes-Solutions/master/Sh4ll6_by_destructeur/cfg.png)
 
 the binary has 13 "false blocks" on the right side of the graph, my guess is it checks char by char the flag and it follows these blocks if the selected char is right.
-Then it performs a print. The "good boy" is printed in block 0x8060e03, the "bad boy" in 0x8062faf<br/>
+Then it performs a print. The "good boy" string is printed at block 0x8060e03, the "bad boy" at 0x8062faf<br/>
 When a binary performs a char by char check it makes me happy because i can use [Valtool](https://github.com/Daniele-B/Valtool.git) to bruteforce the flag and win without too much effort.
-Lets try:<br/>
+Let's try:<br/>
 ```>python Valtool.py -l 13 -c 6 -s _ Sh4ll6_cf_restored```
 
 Outupt is pretty ugly beacuse it cannot handle segfault well, but it worked!
