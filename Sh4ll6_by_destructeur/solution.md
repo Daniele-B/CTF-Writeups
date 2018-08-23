@@ -2,6 +2,8 @@
 
 I've menaged to solve this crackme using only black box tricks and some guessing
 
+Original link: https://crackmes.one/crackme/5b26c58b33c5d421d6f6d3f2
+
 
 This crackme is clearly [UPX](https://upx.github.io) packed, we can find the ```This file is packed with the UPX executable packer http://upx.sf.net``` string in it.
 So let's unpack it! 
