@@ -1,4 +1,4 @@
-#solution
+# Solution
 
 
 This is a really easy crackme based on xor "encryption", the first i did on crackmes.one
