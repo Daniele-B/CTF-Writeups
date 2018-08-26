@@ -5,7 +5,7 @@ I've menaged to solve this crackme using only black box tricks and some guessing
 Original link: https://crackmes.one/crackme/5b26c58b33c5d421d6f6d3f2
 
 
-This crackme is clearly [UPX](https://upx.github.io) packed, we can find the ```This file is packed with the UPX executable packer http://upx.sf.net``` string in it.
+This crackme is clearly [UPX](https://upx.github.io) packed, we can find the `This file is packed with the UPX executable packer http://upx.sf.net` string in it.
 So let's unpack it! 
 ```
 >./upx -d -o Sh4ll6_unpacked Sh4ll6
@@ -58,11 +58,11 @@ exit(1Bad password, looser <no return ...>
 +++ exited (status 1) +++
 ```
 
-What we notice here is that the password must be maximum 13 charcher long.<br/>
+The binary uses `fgets("blabla",13, input)` to read user input, so password must be maximum 13 charcher long.<br/>
 Another thing we can see is that the binary uses sigaction to handle SIGSEGV and SIGILL signals, then it triggers them.
 Sometimes these kind of stuff are used as antidebugger tricks.
 
-If you open a disassembler now what you will see is only mov instructions, and if you are enough in the business of reversing you will catch immediatly what it means: the binary is obfuscated with [Movfuscator](https://github.com/xoreaxeaxeax/movfuscator.git).
+If you open  the binary in a disassembler now what you will see is only mov instructions, and if you are enough in the business of reversing you will catch immediatly what it means: the binary is obfuscated with [Movfuscator](https://github.com/xoreaxeaxeax/movfuscator.git).
 <br/>[asm86 Mov instruction is turing complete](https://www.cl.cam.ac.uk/~sd601/papers/mov.pdf), which basically means you can replace any other asm86 instruction with a bunch of mov. Cool! Isn't it? Movfuscator does exactly this (and adds some antidebug tricks, already described).
 
 So now how do we retrive the original instructions?<br/>
@@ -78,7 +78,7 @@ Let's try:<br/>
 ```>python Valtool.py -l 13 -c 6 -s _ Sh4ll6_cf_restored```
 
 Outupt is pretty ugly becuse Valtool cannot handle segfault well, but it worked!
-Our flag is ```0bfuscated=!```
+Our flag is `0bfuscated=!`
 
 ```
 >./Sh4ll6
