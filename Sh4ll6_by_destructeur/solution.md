@@ -67,7 +67,7 @@ If you open  the binary in a disassembler now what you will see is only mov inst
 
 So now how do we retrive the original instructions?<br/>
 Have original instrutions back is a painful job but there is an experimental deobfuscator, and we can use it.<br/>
-[Demovfuscator](https://github.com/kirschju/demovfuscator.git) doesn't retrive the instructions but its very helpful because it removes the annoyng sigaction stuff and, most important, it can give us the original program control flow.
+[Demovfuscator](https://github.com/kirschju/demovfuscator.git) doesn't retrive the instructions but its very helpful because it removes the annoying sigaction stuff and, most important, it can give us the original program control flow.
 This is the control flow of our crackme:<br/>
 ![alt text](https://raw.githubusercontent.com/Daniele-B/Crackmes-Solutions/master/Sh4ll6_by_destructeur/cfg.png)
 
