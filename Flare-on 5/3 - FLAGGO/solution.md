@@ -6,7 +6,7 @@ I started analyzing the first one and i've noticed it behaves like a normal crac
 It asks for a password then prints `Go step on a brick!` if the password is wrong and `Oh, hello Batman...` if your password is `IronManSucks`.<br/>
 The password check is at `0x00401240`, the first part of it checks for the `IronManSucks` string which is obviously the wrong one, the second part checks for the right password instead.<br/>
 At this point password is loaded at runtime, so we can't see it through static analysis. To get it we have to go back at main.<br/>
-The second main called function is the most intersting one, it calls another function and then copies the bytes recieved into the password memory location. The called function loads a resource called `BRICK` through some win apis then it exits.<br/>
+The second called function in main is the most intersting one, it calls another function and then copies the bytes recieved into the password memory location. The called function loads a resource (`BRICK`) through some win apis then it exits.<br/>
 I've debugged the binary and i realized the resource loaded is the right password.<br/>
 Submitting that password the output is 
 
@@ -15,7 +15,7 @@ Everything is awesome!
 65141174.png => w
 ```
 Also a png image is decompressed and put into the same binary folder.<br/>
-Through binary diffing i was able to understand that all biaries are equals, they differs only by resource section.
+Through binary diffing i was able to understand that all biaries are equal, they differs only by resource section.
 
 ![alt text](flaggo_diff.PNG)
 
@@ -103,4 +103,4 @@ Output:
 47202222.png => n
 ```
 
-Every image has a numer on the top-left corner, if we order output characters based on that number we have the flag: `mor3_awes0m3_th4n_an_awes0me_p0ssum@flare-on.com`
+Every image has a number on the top-left corner, if we order output characters based on that number we have the flag: `mor3_awes0m3_th4n_an_awes0me_p0ssum@flare-on.com`
