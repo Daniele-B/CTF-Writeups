@@ -12,7 +12,7 @@ At this point we can save `num1` and `num2` locals as x and y board coordinates 
 
 ![alt text](Minesweeper_AllocateMemory.PNG)
 
-At this point we have:
+Locals saved are:
 
 ```
 X: 8 Y: 29
