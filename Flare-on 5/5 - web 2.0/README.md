@@ -29,7 +29,7 @@ I didn't analyze every function called because i realized i can dump flag charat
 
 ![alt text](wasm_dump.png)
 
-If we look cautiously at `f9` we can see the indeirect call at line 244.<br/>
+If we look cautiously at `f9` function we can see the indirect call at line 244.<br/>
 The right charatcer is loaded in local#72 at line 264, so to solve it i set a breakpoint onto line 265 and manually dump local 72.<br/>
 Flag is: `wasm_rulez_js_droolz@flare-on.com`
 
