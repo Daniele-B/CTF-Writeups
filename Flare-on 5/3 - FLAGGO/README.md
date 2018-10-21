@@ -21,7 +21,7 @@ Through binary diffing i was able to understand that all biaries are equal, they
 
 So now i have to script something for extarcting all the pngs and all the outputs. I choose python for this:
 
-```
+```python
 import os, subprocess
 
 BINARIES_PATH = 'C:\\Users\\bbian\\Desktop\\FlareOn5_Challenges\\03_FLEGGO\\FLEGGO'
