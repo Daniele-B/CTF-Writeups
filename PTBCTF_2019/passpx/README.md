@@ -17,7 +17,7 @@ The steps are:
 
 The output should look like this:
 
-[alt text](proc_map.png)
+![alt text](proc_map.png)
 
 The addresses starting like `0x7ffff7f..` are packer stuff, you don't care about them yet. Dump the other part by entering `dump mem passpx_dump0.bin 0x400000 0x613000`.
 
@@ -26,7 +26,7 @@ The main is at `0x4001a0`.
 
 What's stands out here is the password check:
 
-[alt text](fake_check.png)
+![alt text](fake_check.png)
 
 If you pass the string `PasSw0rd!` to the binary as argument it prints `Try harderer`, so this check is cleary fake.
 
