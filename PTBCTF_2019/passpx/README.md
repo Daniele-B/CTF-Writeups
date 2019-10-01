@@ -6,6 +6,8 @@ This crackme is packed with a custom version of UPX and it cannot be unpacked us
 
 Let's run `strace` to see what's going on.
 
+![alt text](strace.png)
+
 this binary could be unpacked dinamically by catching the `munmap` syscall in `gdb` and dumping the original sections, but this would lead to a crackme without the real password check. The author was sneaky and he/she hidden it in the unpacking routine.
 
 Let's do it anyway just to discover where the `Try harder` came from.
@@ -38,7 +40,7 @@ So, where is the real password check?
 To find the right password check you need to analyze the packer and find the entry of the unpacked code.
 Debugging a little bit it's possible discover at `0x00409f44` the `jmp r13` instruction leads to a code with weird addresses like `0x7fff..`, and that's where the real unpacker starts to execute its code. Let's dump the packer sections and then reverse them statically using IDA.
 
-There is a lot of code in the new dump, mostly hidden due to the fact it's just a memory dump. This binary doesn't have an ELF header, so it's not so friendly to disassemble/decompile.
+There is a lot of code in [the new dump](passpx_dump1.bin), mostly hidden due to the fact it's just a memory dump. This binary doesn't have an ELF header, so it's not so friendly to disassemble/decompile.
 Poking around a little bit leads to some interesting functions:
 * `0x113a`, calculates the md5 of a string
 * `0x1af4`, checks the 5th argument against an hardcoded hash
