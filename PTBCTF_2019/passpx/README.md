@@ -33,7 +33,7 @@ What's stands out here is the password check:
 If you pass the string `PasSw0rd!` to the binary as argument it prints `Try harderer`, so this check is cleary fake.
 
 If those jumps are not taken the string `Try harder` is decrypted (using a simple xor loop) and then printed.
-There is another check before, just in case arg[1] is missing, this one ends printing the _usage stuff_.
+There is another check before, just in case `arg[1]` is missing, this one ends printing the _usage stuff_.
 
 So, where is the real password check?
 
@@ -53,7 +53,7 @@ Poking around a little bit leads to some interesting functions:
 
 All those functions are some way related to the `0x2438` one, which is where the real password check start.
 
-All this code can be reduced to `md5(password)=e6442d0a7c15507e62753e5e044e5dcd` (look at `0x1af4`). This is the real password check.
+Tracking how the data flows through the functions you can notice all the code can be reduced to `md5(password)=e6442d0a7c15507e62753e5e044e5dcd` (look at `0x1af4`). This is the real password check.
 
 Unfortunately that hash is uncrackable, but you can debug the binary and force (moving the `rip` register) the check to see what's next.
 At this point, if you debug carefully, you can see the unpacked function is changed and then the flag is printed: `PTBCTF{8d4f4168500acd66e65c921a694e15dd2e862e5f}`.
