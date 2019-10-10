@@ -52,7 +52,7 @@ Poking around a little bit leads to some interesting functions:
 
 ...and so on
 
-All these functions are some way related to the `0x2438` one which is where the real password check start.
+All these functions are some way related to the `0x2438` one which is where the real password check starts.
 
 Tracking how the data flows through the functions we can notice all the code can be reduced to `md5(password)=e6442d0a7c15507e62753e5e044e5dcd` (look at `0x1af4`). 
 
