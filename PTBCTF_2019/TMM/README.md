@@ -8,7 +8,7 @@ Challenge description:
 >Note2: the flag format is slightly messed up
 
 
-We're given 2 files: a python script and a WinDbg debug trace.
+We're given 2 files: a python script and a Windbg debug trace.
 
 Let's take a look to the python file:
 
@@ -48,8 +48,8 @@ So, open it in winDbg and see how the key is generated. We can easily guess at t
 
 The first time we hit the breakpoint we have `--== TTM (beta) ==--` in `rdx`, if we try to decrypt with this string we fail.
 
-Let's try the second one: this time in `rdx` we have a non printabke stream of bytes which could be our key. Here's the screenshot:
+Let's try the second one: this time in `rdx` we have a non printable stream of bytes which could be our key. Here's the screenshot:
 
 ![alt text](secret_write.PNG)
 
-This time we got right, decrypting the flag with this key lead us to `ptbctf{t1m3_1s_4n_1llus10n}`. 
+This time we're right. Decrypting the flag with this key lead us to `ptbctf{t1m3_1s_4n_1llus10n}`. 
