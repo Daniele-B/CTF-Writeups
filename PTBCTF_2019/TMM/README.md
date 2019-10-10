@@ -1,10 +1,10 @@
 Challenge description:
 >You know those challenges where you get the source code, you have everything before your eyes and then you spot that line flag = "REDACTED or key = "REDACTED ?
-
+>
 >Fortunately, today we're finally releasing The Time Machine. Travel in time and get back that key!
-
+>
 >Note: make sure to Google stuff before reinventing the wheel!
-
+>
 >Note2: the flag format is slightly messed up
 
 
@@ -45,9 +45,11 @@ Let's do some blackbox stuff like grepping for `secret_key` to see if we can ext
 Now we know the trace comes from a binary called `secred_key_gen.exe` and the secret key comes from there too!
 
 So, open it in winDbg and see how the key is generated. We can easily guess at this point the binary traced uses the `WriteFile` WinAPI from `Kernel32.dll` to write the key. So just enter `bp kernel32!WriteFile` in windbg an then `g` to start the execution of the trace.
+
 The first time we hit the breakpoint we have `--== TTM (beta) ==--` in `rdx`, if we try to decrypt with this string we fail.
-Let's try the second one: this time in `rdx` we have a non printable stream of bytes which could be our key. Here's the screenshot:
+
+Let's try the second one: this time in `rdx` we have a non printabke stream of bytes which could be our key. Here's the screenshot:
 
 ![alt text](secret_write.PNG)
 
-This time we're right. Decrypting the flag with this key leads to `ptbctf{t1m3_1s_4n_1llus10n}`, so we won.
+This time we got right, decrypting the flag with this key lead us to `ptbctf{t1m3_1s_4n_1llus10n}`. 
